@@ -285,6 +285,63 @@ knowledge of normal people and towns in your comments.
  - Each town must be visited by people. People may visit other towns. 
  - A person may be mayor of a town. A town may be goverened by a person
 
+3. See figure 1 in repo
+
+## Exercise 2.6 Identify the components in the ERD
+
+1. Identify the possible Entities and Attributes from the given scenario.
+
+A company has several departments. Each department has a supervisor and at least one employee. Employees must be assigned
+to at least one, but possibly more departments. At least one employee is assigned to a project, but an employee may be on
+vacation and not assigned to any projects. The important data fields are the names of the departments, projects, supervisors and
+employees, as well as the supervisor and employee number and a unique project number.
+
+- Departments
+  - ID
+  - Name
+- projects
+  - ID
+  - Name
+  - Assigned
+- supervisors
+  - ID
+  - Name
+  - department id
+- Employees
+  - ID
+  - Name
+  - Supervisor id
+  - department id
+  - Vacation
+
+2. Read the given business scenario. Draw the entities HAIRSTYLIST and CLIENT. List the attributes associated with each entity and
+specify whether they are mandatory or optional. Identify the UIDs. Follow the diagramming conventions discussed. State the
+ERDish for the relationships.
+“In our salon, we have a number of hairstylists. They are all salaried employees, so we keep a record of their first name, last name,
+address, phone number, social-security number, and salary. During the course of a day, a hairstylist may see several clients. On a
+slow day, a hairstylist may not work on anyone at all. We have several walk-in clients, and they each get assigned to one
+hairstylist. We just ask for their first name. We also have customers who call to make an appointment. When they do this, we ask
+for their first name, last name, and phone number. We also ask if they would like a specific hairstylist. If they have no preference,
+we assign one for them. Of course, they are allowed to switch to another hairstylist for their next visit to the salon. We are
+interested in tracking the daily appointments -- which stylist works on which client during a given day.”
+
+See figure 2-2 in repo 
+
+3. Read the given business scenario. Draw the entities TEACHER and COURSE and CLASS. List the attributes underneath each
+entity. Specify whether they are mandatory or optional. Identify the UIDs. . State the ERDish for the relationships.
+“We have several teachers at our school. A teacher can be assigned up to three classes per semester. If a teacher is on
+sabbatical, he doesn’t teach that semester. We keep a record of the teacher’s first name, last name, address, phone number, and
+email address.
+Our school offers many courses -- such as Data Modeling, Introduction to SQL, Trigonometry, Physics, and Biology. Each course
+has a code. For example: Data Modeling would be DM001, Trigonometry would be TR004, etc. During each semester, a course
+may be taught in several classes -- so there could be two classes of Physics, three classes of Biology, etc. Each class can be
+taught by only one teacher. We assign a unique ID for each class, and we also keep track of the day it is taught, the time, and the
+classroom.”
+
+See figure 2.2 in repo 
+
+
+
 
 
  
