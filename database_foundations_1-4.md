@@ -210,6 +210,20 @@ Add the appropriate attributes as well as the optionality (*, °) to all the ent
  - Department
    - Department_Name
    - Department_ID
+ - student
+   - First name*
+   - Last name*
+   - number of days absent*
+ - Faculty
+   - Name*
+   - ID*
+   - Department*
+ - Academic session
+   - Name*
+   - ID*
+ - Parent Information
+   - First Name*
+   - Last Name* 
 
 ## Exercise 2.4 Identify the Unique Identifier and corresponding Primary keys
 
@@ -243,6 +257,33 @@ Tasks
 1. Use the Academic Database ERD from the previous exercises to identify the following:
 a. Unique Identifiers
 b. Candidate Unique Identifiers
+
+Course
+   - department
+    - Deparment ID(U)
+   - student
+    - Name_ID
+   - faculty
+    - Name_ID
+   - Academic Session
+    - Academic ID
+   - Parent Information
+    - Parent ID
+   - Exam
+    - Exam_ID
+
+## Exercise 2.5 Identify relationships from ERD
+
+1. Read the relationship. Which text corresponds to the diagram?
+- Each EMPLOYEE must be assigned to one and only one DEPARTMENT.
+Each DEPARTMENT must be responsible for one or more EMPLOYEEs.
+
+2. Read each relationship in the model below. For each relationship, write the ERD statement and your comments. Use your
+knowledge of normal people and towns in your comments.
+ - Each Town can have 1 or more People Born in it. Each person can only be born in 1 town.
+ - More than one Person has to be living in a town. Not all people are from The town.
+ - Each town must be visited by people. People may visit other towns. 
+ - A person may be mayor of a town. A town may be goverened by a person
 
 
 
