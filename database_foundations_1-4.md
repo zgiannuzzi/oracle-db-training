@@ -341,8 +341,98 @@ classroom.”
 See figure 2.2 in repo 
 
 
+## Exercise 3.1 Resolve M:M relationships. 
+
+1. Add an entity called enroll date.
+ - Enroll date table
+    - start date
+    - end date
 
 
+
+
+
+
+
+
+
+
+
+
+Exercise 3.1.2
+2. see figure 3.1  
+
+
+##Exercise 3.2 
+
+1. Student course detail 
+- Course ID
+- Student ID
+- Grade
+- Historical grade
+
+2. Start time for an assignment is UID because an assignments have different start times therefor can Identify based on start times.
+
+3.
+   - Another exam has been scheduled
+   - End of school year
+   - Another exam is scheduled in the same classroom
+
+##Exercise 3.3 
+1. To first normalization add following rows
+   - Remove Red,blue row and Blue,Yellow row  normalize prices
+2. To second normalization
+   - fix suplier ID for unique values and Store ID should have unique values
+3. To Third Normalization
+   - Fix Book ID to match corresponding catagorys
+
+Exercise 3.4: Validate an ERD for Normalization
+2. Would have to seperate the paint and interior color entitiys because colorscheme relies on the current attributes.
+
+Exercise 3.3.1
+
+ - A Every book has a title, isbn, year and price. The store also keeps the author and publisher for any book
+ - D The store has several warehouses, each of which has a code, address and phone number.
+ - E The warehouse stocks several books. A book may be stocked at multiple warehouses
+ - G The bookstore keeps the name, address, email-id, and phone number of its customers.
+ - J At that time, more information will be needed to complete the transaction. Usually, the customer will be asked to fill or
+select a billing address, a shipping address, a shipping option, and payment information such as credit card number. An
+email notification is sent to the customer as soon as the order is placed.
+
+## Exercise 3.4
+
+1.
+   - Attribute = Row
+   - Entity = Columns 
+   - ER model = Physical design
+   - Primary EID = Primary Key
+
+2. 
+   - PK = Primary Key
+   - FK = Foreign Key
+   - UK = Unique Key
+   - "*" = required
+   - o = optional
+
+3.
+   - Auth.
+   - publ.
+   - Cust.
+4. 
+   - Song
+     - Title
+     - release date
+     - Type
+   - Event
+     - Description
+     - Venue
+     - Type
+   - Customer
+     - First name
+     - last name
+     - Phone number
+     - Email
+ 
 
  
 
