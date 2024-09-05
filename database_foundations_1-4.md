@@ -378,7 +378,7 @@ Exercise 3.1.2
    - End of school year
    - Another exam is scheduled in the same classroom
 
-##Exercise 3.3 
+## Exercise 3.3 
 1. To first normalization add following rows
    - Remove Red,blue row and Blue,Yellow row  normalize prices
 2. To second normalization
