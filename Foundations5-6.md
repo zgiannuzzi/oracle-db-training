@@ -106,5 +106,40 @@
     ``` sql
       select * From AD_PARENT_INFORMATION ORDER BY PARENT_ID
     ```
+### 6.9
 
+1. Display the different courses offered by the departments in the school.
+    ``` sql
+      select NAME From AD_COURSES JOIN AD_DEPARTMENTS ON (AD_COURSES.DEPT_ID = AD_DEPARTMENTS.ID)
+    ```
+2. Display the courses offered in the Fall session.
+    ``` sql
+     select NAME
+      From AD_COURSES JOIN AD_ACADEMIC_SESSIONS
+      ON (AD_COURSES.SESSION_ID = AD_ACADEMIC_SESSIONS.ID)
+      WHERE AD_ACADEMIC_SESSIONS.ID = 200
+    ```
+3. Display the course details, the department that offers the courses and students who have enrolled for those courses.
+    ``` sql
+      select * From AD_PARENT_INFORMATION ORDER BY PARENT_ID
+    ```
+4. Display the course details, the department that offers the courses and students who have enrolled for those courses for
+department 20.
+    ``` sql
+      select * From AD_PARENT_INFORMATION ORDER BY PARENT_ID
+    ```
+5. Write a query to display the details of the exam grades obtained by students who have opted for the course with COURSE_ID in
+the range of 190 to 192.
+    ``` sql
+      select *
+       From AD_EXAM_RESULTS JOIN AD_STUDENTS
+       ON (AD_EXAM_RESULTS.STUDENT_ID = AD_STUDENTS.ID)
+       WHERE AD_EXAM_RESULTS.COURSE_ID BETWEEN 190 and 192
+    ```
+6. Retrieve the rows from the AD_EXAM_RESULTS table even if there are no matching records in the AD_COURSES table
+    ``` sql
+       select *
+       From AD_EXAM_RESULTS FUll OUTER JOIN AD_COURSES
+       ON (AD_EXAM_RESULTS.COURSE_ID = AD_COURSES.ID)
+    ```
 
