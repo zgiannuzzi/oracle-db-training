@@ -1,9 +1,13 @@
 # Foundations 5-6
 ### 5.1
 #### EXERCISE 1
+Create Glossary 
+![Image of Glossary](https://github.com/zgiannuzzi/oracle-db-training/blob/main/db_Glossary.PNG)
+
 
 #### EXERCISE 2
-I do not have an option for design model therefor I cannot procede
+1.
+![Image of Glossary](https://github.com/zgiannuzzi/oracle-db-training/blob/main/db_Glossary_3.PNG)
 
 ### 6.3
 #### EXERCISE 1
