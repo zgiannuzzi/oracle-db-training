@@ -1,5 +1,9 @@
 # Foundations 5-6
+### 5.1
+#### EXERCISE 1
 
+#### EXERCISE 2
+I do not have an option for design model therefor I cannot procede
 
 ### 6.3
 #### EXERCISE 1
