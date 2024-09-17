@@ -1,5 +1,140 @@
 # Foundations 5-6
 
+
+### 6.3
+#### EXERCISE 1
+``` sql
+CREATE TABLE STUDENT(
+student_id NUMBER(6) NOT NULL,
+first_name varchar2(100) NOT NULL,
+last_name VARCHAR2(100) NOT NULL,
+reg_year Date NOT NULL,
+email varchar2(200) NOT NULL
+);
+
+
+CREATE TABLE PARENT_INFO(
+parent_id NUMBER(6) NOT NULL,
+first_name1 varchar2(100) NOT NULL,
+last_name1 VARCHAR2(100) NOT NULL,
+first_name2 varchar2(100) NOT NULL,
+last_name2 VARCHAR2(100) NOT NULL
+);
+
+
+
+CREATE TABLE STUDENT_COURSE_DET(
+grade NUMBER(6) NOT NULL
+);
+
+CREATE TABLE STUDENT_ATTENDANCE(
+number_of_work_days NUMBER(6) NOT NULL,
+number_of_days_off NUMBER(6) NOT NULL,
+elligibility VARCHAR2(100)
+);
+
+CREATE TABLE ACCADEMIC_SESSION(
+academic_ses_id NUMBER(6) NOT NULL,
+academic_name VARCHAR2(100) NOT NULL
+);
+
+CREATE TABLE COURSE(
+course_id NUMBER(6) NOT NULL,
+course_name VARCHAR2(100) NOT NULL
+);
+
+CREATE TABLE EXAM_RESULT(
+grade NUMBER(6) NOT NUll
+);
+
+CREATE TABLE DEPARTMENT(
+department_id NUMBER(6) NOT NULL,
+department_name VARCHAR2(100) NOT NULL,
+department_head VARCHAR(100) NOT NULL
+);
+
+CREATE TABLE EXAM(
+exam_id NUMBER(6) NOT NULL,
+start_date VARCHAR2(100) 
+);
+
+CREATE TABLE EXAM_TYPE(
+type_id NUMBER(6) NOT NULL,
+start_date VARCHAR2(100),
+exam_description VARCHAR2(100)
+);
+
+CREATE TABLE FACULTY_COURSE_DETAIL(
+contact_hours varchar(100) NOT NUll
+);
+
+
+CREATE TABLE FACULTY_LOGIN_DETAIL(
+login_date_time timestamp NOT NUll
+);
+
+CREATE TABLE FACULTY(
+faculty_id NUMBER(6) NOT NULL,
+first_name varchar2(100) NOT NULL,
+last_name VARCHAR2(100) NOT NULL,
+email varchar2(100) NOT NULL,
+salary number(8),
+insurance varchar2(100),
+hourly_rate number(6)
+dept_ID number(6)
+);
+
+
+```
+#### EXERCISE 2
+
+
+#### EXERCISE 3
+1.
+``` sql
+CREATE TABLE DEPT(
+dept_id NUMBER(8) ,
+dept_name varchar2(30) ,
+loc_id NUMBER(4)
+);
+
+ALTER TABLE DEPT ADD CONSTRAINT DEPT_PK PRIMARY KEY (dept_id, dept_name);
+```
+2.
+``` sql
+CREATE TABLE SUPPLIERS(
+sup_id NUMBER(15),
+sup_name varchar2(30),
+contact_name NUMBER(4) 
+);
+
+ALTER TABLE SUPPLIERS ADD CONSTRAINT SUP_PK PRIMARY KEY (sup_id, sup_name);
+
+CREATE TABLE PRODUCT(
+product_id NUMBER(10) ,
+sup_id NUMBER(15) NOT NULL,
+contact_name varchar2(30) NOT NULL
+);
+
+ALTER TABLE PRODUCT ADD CONSTRAINT PRODUCT_PK PRIMARY KEY product_id;
+ALTER TABLE PRODUCT ADD CONSTRAINT PRODUCT_FK FOREIGN KEY (sup_id,sup_name) REFERENCES SUPPLIERS (sup_id,sup_name) ;
+
+```
+3.
+``` sql
+CREATE TABLE DEPT_SAMPLE(
+dept_id NUMBER(8) ,
+dept_name varchar2(30) ,
+loc_id NUMBER(4)
+);
+
+ALTER TABLE DEPT_SAMPLE ADD CONSTRAINT unq_dept_det UNIQUE (dept_id, dept_name);
+```
+### 6.4
+
+### 6.5 
+
+## Sections 6.6 - 6.9 Used the answer key answers create the tables to ensure correctness of tables.
 ### 6.6
 
 1. Write a simple query to view the data inserted in the tables created for the academic database
