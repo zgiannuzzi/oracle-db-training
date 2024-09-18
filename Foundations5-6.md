@@ -33,7 +33,8 @@ Create Glossary
 - Had to create own account for the tables 
 - Clicked on help Icon and reviewed sections and topics
 
-### 6.3
+## The following sections were completed at different times. The first 3 sections are what i attempted in my own. THe sections after used answer key for the query questions.
+### 6.3 
 #### EXERCISE 1
 ``` sql
 CREATE TABLE STUDENT(
@@ -280,7 +281,10 @@ Where FACULTY_LOGIN_DETAIL.ID = 820
 
 ```
 ### 6.5 
-
+1. Yes
+2.
+  - 3 records in the table 
+  - Rollback would go back to the state where there were 4 records in the table.
 ## Sections 6.6 - 6.9 Used the answer key answers create the tables to ensure correctness of tables.
 ### 6.6
 
