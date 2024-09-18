@@ -33,7 +33,7 @@ Create Glossary
 - Had to create own account for the tables 
 - Clicked on help Icon and reviewed sections and topics
 
-## The following sections were completed at different times. The first 3 sections are what i attempted in my own. THe sections after used answer key for the query questions.
+## The following sections were completed at different times. The first 3 sections are what I attempted on my own. The sections after used answer key for the query questions.
 ### 6.3 
 #### EXERCISE 1
 ``` sql
