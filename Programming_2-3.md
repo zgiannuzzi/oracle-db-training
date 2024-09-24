@@ -1,32 +1,32 @@
 ### 1.3.1
 
-1. JOIN - Display data from two or more related tables.
+1.  JOIN - Display data from two or more related tables.
 
-2. A symbol used to perform an operation on some values.
+2.  A symbol used to perform an operation on some values.
 
-3. An implementation of an attribute or relationship in a table.
+3.  An implementation of an attribute or relationship in a table.
 
-4. PROJECTION - The capability in SQL to choose the columns in a table that you want returned from a query.
+4.  PROJECTION - The capability in SQL to choose the columns in a table that you want returned from a query.
 
-5. NULL - A value that is unavailable, unassigned, unknown, or inapplicable.
+5.  NULL - A value that is unavailable, unassigned, unknown, or inapplicable.
 
-6. ALIAS - Renames a column heading.
+6.  ALIAS - Renames a column heading.
 
-7. A mathematical equation.
+7.  A mathematical equation.
 
-8. SELECTION - The capability in SQL to choose the rows in a table returned from a query.
+8.  SELECTION - The capability in SQL to choose the rows in a table returned from a query.
 
-9. SELECT STATEMENT - Retrieves information from the database
+9.  SELECT STATEMENT - Retrieves information from the database
 
-10. SELECT CLAUSE - Specifies the columns to be displayed
+10.  SELECT CLAUSE - Specifies the columns to be displayed
 
-11. FROM CLAUSE - Specifies the table containing the column listed in the select clause
+11.  FROM CLAUSE - Specifies the table containing the column listed in the select clause
 
-12. KEY WORD - An individual SQL command
+12.  KEY WORD - An individual SQL command
 
-13. CLAUSE - Part of a SQL statement
+13.  CLAUSE - Part of a SQL statement
 
-14. STATEMENT - A combination of the two clauses
+14.  STATEMENT - A combination of the two clauses
 
 ### 2.1
 
@@ -245,10 +245,56 @@ major VARCHAR2(24)
  ``` sql
        SELECT first_name, last_name FROM f_staff where birthdate < 1980 
  ```
+### 2.3 
 
+1. ESCAPE - This option identifies that the escape characters should be interpreted literally
+2. IS NULL - Condition tests for null values
+3. BETWEEN...AND - Displays rows based on a range of values
+4. inclusive - Including the specified limits and the area between them; the numbers 1-10, inclusive
+5. LIKE - Selects rows that match a character pattern
+6. IN - Tests for values in a specified list of values
 
+1. Display the first name, last name, and salary of all Global Fast Foods staff whose salary is
+between $5.00 and $10.00 per hour.
+   ``` sql
+       SELECT first_name, Last_name, salary FROM employees where salary between 5.00 and 10.00
+   ```
+3. Display the location type and comments for all DJs on Demand venues that are Private Home.
+   ``` sql
+       SELECT loc_type, comments FROM d_venues where loc_type = 'Private Home' '_o%'
+   ```
+5. Using only the less than, equal, or greater than operators, rewrite the following query:
+   ``` sql
+       SELECT first_name, last_name
+       FROM f_staffs
+       WHERE salary BETWEEN 20.00 and 60.00;
+   ```
+   ``` sql
+       SELECT first_name, last_name
+       FROM f_staffs
+       WHERE salary >= 20.00 and <= 60.00;
+   ```
+7. Create a list of all the DJs on Demand CD titles that have “a” as the second letter in the title.
+   ``` sql
+       SELECT first_name, last_name FROM d_partners where title LIKE '_a%'
+   ```
+8. Who are the partners of DJs on Demand who do not get an authorized expense amount?
+   ``` sql
+       SELECT first_name, last_name FROM d_partners where auth_expense_amt IS NULL
+   ```
+10. Select all the Oracle database employees whose last names end with “s”. Change the heading of the column to read Possible Candidates.
+   ``` sql
+       SELECT  last_name as "Possible Candidates" FROM employees where last_name LIKE '%_s'
+   ```
+12. Which statement(s) are valid?
+  -  WHERE quantity = NULL;
+  -  WHERE quantity IS NULL;
+  -  WHERE quantity != NULL;
 
-
+13. Write a SQL statement that lists the songs in the DJs on Demand inventory that are type code 77, 12, or 1.
+   ``` sql
+       SELECT title FROM d_songs where ID IN (77,12,1)
+   ```
 
 
 
