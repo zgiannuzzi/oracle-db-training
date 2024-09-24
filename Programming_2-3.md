@@ -261,7 +261,7 @@ between $5.00 and $10.00 per hour.
    ```
 3. Display the location type and comments for all DJs on Demand venues that are Private Home.
    ``` sql
-       SELECT loc_type, comments FROM d_venues where loc_type = 'Private Home' '_o%'
+       SELECT loc_type, comments FROM d_venues where loc_type = 'Private Home' 
    ```
 5. Using only the less than, equal, or greater than operators, rewrite the following query:
    ``` sql
@@ -295,6 +295,206 @@ between $5.00 and $10.00 per hour.
    ``` sql
        SELECT title FROM d_songs where ID IN (77,12,1)
    ```
+### 3.1 
+
+1. NOT - Inverts the value of the condition
+2. AND - Both conditions must be true for a record to be selected
+3. Precedence - Rules that determine the order in which expressions are evaluated and calculated
+5. OR - Either condition can be true for a record to be selected
+
+1. Execute the two queries below. Why do these nearly identical statements produce two different
+results? Name the difference and explain why.
+``` SQL
+SELECT code, description
+FROM d_themes
+WHERE code >200 AND description IN('Tropical', 'Football', 'Carnival');
+```
+- The query requires that Code be greater than 200 AND must include one of the following 'Tropical', 'Football', 'Carnival'
+```SQL
+SELECT code, description
+FROM d_themes
+WHERE code >200 OR description IN('Tropical', 'Football', 'Carnival');
+```
+- The query requires that Code be greater than 200 OR must include one of the following 'Tropical', 'Football', 'Carnival'
+
+2. Display the last names of all Global Fast Foods employees who have “e” and “i” in their last
+names.
+  ``` sql
+       SELECT Last_name FROM employees where last_name like '%e%' AND last_name like '%i%'
+  ```
+3. I need to know who the Global Fast Foods employees are that make more than $6.50/hour and their position is not order taker.
+  ``` sql
+       SELECT Last_name FROM employees where last_name like '%e%' AND last_name like '%i%'
+  ``` 
+5. Using the employees table, write a query to display all employees whose last names start with “D”
+and have “a” and “e” anywhere in their last name.
+  ``` sql
+       SELECT Last_name FROM employees where last_name like '%e%' AND last_name like '%i%'
+  ```
+
+6. In which venues did DJs on Demand have events that were not in private homes?
+  ``` sql
+       SELECT loc_type, comments FROM d_venues where loc_type NOT 'Private Home' 
+  ```
+7. Which list of operators is in the correct order from highest precedence to lowest precedence?
+a. AND, NOT, OR
+
+For questions 7 and 8, write SQL statements that will produce the desired output.
+
+7. Who am I?
+I was hired by Oracle after May 1998 but before June of 1999. My salary is less than $8000 per
+month, and I have an “en” in my last name.
+  ``` sql
+       SELECT first_name,last_name  FROM employees where loc_type NOT 'Private Home' 
+  ```
+8. What's my email address?
+Because I have been working for Oracle since the beginning of 1996, I make more than $9000 per
+month. Because I make so much money, I don't get a commission.
+
+
+### 3.2 
+
+1. ORDER BY ASC - Orders the rows in ascending order (the default order); A-Z
+2. ORDER BY DESC Orders the rows in descending order: Z-A
+3. To arrange according to class, kind, or size
+
+1. In the example below, assign the employee_id column the alias of “Number.” Complete the SQL
+statement to order the result set by the column alias.
+SELECT employee_id, first_name, last_name
+FROM employees;
+2. Create a query that will return all the DJs on Demand CD titles ordered by year with titles in
+alphabetical order by year.
+3. Order the DJs on Demand songs by descending title. Use the alias “Our Collection” for the song
+title.
+
+4. Write a SQL statement using the ORDER BY clause that could retrieve the information needed.
+Do not run the query.
+Create a list of students who are in their first year of school. Include the first name, last name,
+student ID number, and parking place number. Sort the results alphabetically by student last name
+and then by first name. If more than one student has the same last name, sort each first name in Z
+to A order. All other results should be in alphabetical order (A to Z).
+
+Extension Activities
+1. Limiting values with the WHERE clause is an example of:
+e. Selection
+2. You want to sort your CD collection by title, and then by artist. This can be accomplished using:
+c. ORDER BY
+
+3. Which of the following are SQL keywords?
+a. SELECT
+b. ALIAS
+d. FROM
+4. Which of the following are true?
+a. Multiplication and division take priority over addition.
+b. Operators of the same priority are evaluated from left to right.
+c. Parentheses can be used to override the rules of precedence.
+
+5. The following query was written:
+SELECT DISTINCT last_name FROM students
+c. To select last names without duplicates
+
+6. The following string was created using which SELECT clause?
+Abby Rogers is an order taker for Global Fast Foods
+
+d. SELECT first_name ||' ' ||last_name ||' is an '||staff_type||' for Global Fast Foods'
+
+7. Which of the following SELECT clauses will return uppercase column headings?
+a. SELECT id, last_name, address, city, state, zip, phone_number;
+b. SELECT ID, LAST_NAME, ADDRESS, CITY, STATE, ZIP, PHONE_NUMBER;
+c. SELECT Id, Last_name, Address, City, State, Zip, Phone_number;
+d. SELECT id AS ID, last_name AS NAME, address AS ADDRESS, city AS CITY, state AS STATE, zip AS ZIP, phone_number AS PHONE_NUMBER;
+
+8. Which SELECT statement will always return the last names in alphabetical order?
+b. SELECT last_name FROM employees ORDER BY last_name
+
+9. Which SELECT clause will return a column heading for employee_id called “New Employees”?
+b. SELECT employee_id AS New Employees
+d. SELECT employee_id AS "New Employees"
+
+10. Examine the following query:
+SELECT last_name, job_id, salary
+FROM employees
+WHERE job_id = 'SA_REP' OR job_id = 'AD_PRES' AND salary >15000;
+Which results could not have been returned from this query?
+a. Joe Everyone, sales representative, salary 15000
+d. Jordan Lim, sales representative, salary 14000
+
+11. Finish this query so it returns all employees whose last names start with “St”.
+```SQL
+SELECT last_name
+FROM employees WhERE last_Name Like 'ST%'
+```
+12. What salary values will not be returned from this query?
+SELECT last_name, first_name, salary
+FROM employees
+WHERE salary BETWEEN 1900 AND 2100;
+- any salary less than 1900 and greater than 2100
+
+13. Correct each WHERE clause:
+a. WHERE department_id NOT IN (101,102,103);
+b. WHERE last_name = 'King'
+c. WHERE start_date LIKE "05-May-1998"
+d. WHERE salary BETWEEN 5000 AND 7000
+e. WHERE id != 10
+
+14. SELECT prefix
+FROM phone
+WHERE prefix BETWEEN 360 AND 425
+OR prefix IN (206,253,625)
+AND prefix BETWEEN 315 AND 620;
+Which of the following values could be returned? 410
+
+### 3.3 
+1. For each task, choose whether a single-row or multiple row function would be most appropriate:
+
+a. Single row - Showing all of the email addresses in upper case letters
+
+b. Multiple row - Determining the average salary for the employees in the sales department
+
+c. single row - Showing hire dates with the month spelled out (September 1, 2004)
+
+d. single row - Finding out the employees in each department that had the most seniority (the earliest hire date)
+
+e. mulitple row - Displaying the employees’ salaries rounded to the hundreds place
+
+f. multiple row - Substituting zeros for null values when displaying employee commissions.
+
+2. The most common multiple-row functions are: AVG, COUNT, MAX, MIN, and SUM. Give your own
+definition for each of these functions.
+- AVG - The average value for values of all the rows queried
+- COUNT - gives a total count for rows queried
+- MAX - Gives highest value for rows queried
+- MIN - Gives lowest value for rows queried
+- SUM - Gives total sum for rows queried
+
+4. Test your definitions by substituting each of the multiple-row functions into this query.
+SELECT FUNCTION(salary)
+FROM employees
+Write out each query and its results.
+
+```SQL
+SELECT AVG(salary) FROM employees
+```
+```SQL
+SELECT COUNT(salary) FROM employees
+```
+```SQL
+SELECT MAX(salary) FROM employees
+```
+```SQL
+SELECT MIN(salary) FROM employees
+```
+```SQL
+SELECT SUM(salary) FROM employees
+```
+
+
+
+
+
+
+
+
 
 
 
