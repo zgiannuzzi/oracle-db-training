@@ -86,9 +86,9 @@ strings, so no quotes (‘ ‘) are needed
 ### 4.2
 
 1. TRUNC - Used to terminate the column, expression, or value to a specified number of decimal places
-These functions accept numeric input and return numeric values.
-MOD - Returns the remainder of a division.
-2. ROUND - Rounds the column, expression, or value to a set number of decimal places
+2. Number - These functions accept numeric input and return numeric values.
+3. MOD - Returns the remainder of a division.
+4. ROUND - Rounds the column, expression, or value to a set number of decimal places
 
 
 1. Display Oracle database employee last_name and salary for employee_ids between 100 and 102.
