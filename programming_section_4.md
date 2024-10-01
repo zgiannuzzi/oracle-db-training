@@ -176,7 +176,7 @@ today. Round to the nearest year.
    ```sql
       Select MONTHS_BETWEEN(SYSDATE,birthdate)/12 as "number of years" from employee where employee_id = 9
    ```
-7.Your next appointment with the dentist is six months from today. On what day will you go to the
+7. Your next appointment with the dentist is six months from today. On what day will you go to the
 dentist? Name the output, “Appointment.”
    ```sql
       Select ADD_MONTHS(SYSDATE,6) as "Appoinment" from DUAL
@@ -186,7 +186,7 @@ will this be? Name the output, “Deadline.”
    ```sql
       Select LAST_DAY(SYSDATE) as "Deadline" from DUAL
    ```
-9.How many months between your birthday this year and January 1 next year
+9. How many months between your birthday this year and January 1 next year
    ```sql
       Select MONTHS_BETWEEN('1-JAN-2025',19-JUN-2024) as "Months between Birthday" from DUAL
    ```
