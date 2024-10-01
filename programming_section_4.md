@@ -1,4 +1,4 @@
-#### 4.1 
+## 4.1 
 #### Vocabulary 
 - DUAL: Dummy table used to view results from functions and calculations
 - Format:The arrangement of data for storage or display.
@@ -83,7 +83,7 @@ Use the DEPARTMENTS table. Note: All substitution variables in OAE are treated a
 strings, so no quotes (‘ ‘) are needed
 
 
-### 4.2
+## 4.2
 
 1. TRUNC - Used to terminate the column, expression, or value to a specified number of decimal places
 2. Number - These functions accept numeric input and return numeric values.
@@ -141,7 +141,7 @@ people, a 100,000 people, or a million people! Would it make a difference then? 
 difference?
 
 
-### 4.3 
+## 4.3 
 
 1. SYSDATE - A function that returns the current date and time of the database server.
 2. ADD_MONTHS - Add calendar months to date
@@ -205,7 +205,7 @@ will this be? Name the output, “Deadline.”
 13. Give one example of why it is important for businesses to be able to manipulate date data
     - Note the date of when a medication is ordered. 
 
-#### Extension exercises
+### Extension exercises
 
 1. Using DUAL, write a statement that will convert 86.678 to 86.68
    ```sql
