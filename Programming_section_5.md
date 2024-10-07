@@ -164,8 +164,8 @@ departments 80 and 90. In a 5th column called “Review”, again display the ma
 don’t have a manager, display the commission percentage. If they don’t have a commission,
 display 99999.
  ```sql
-    Select DECODE(duration, '2-minute',"shortest", '10-minute', "longest") from d_songs
-```
+    Select first_name, last_name, manager_id, commission_pct, COALESCE(manager_id, commission_pct, 99999) as "review" from employees where department_id = 80 or department_id = 90;
+ ```
 
 
 
