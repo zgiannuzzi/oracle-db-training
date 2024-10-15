@@ -1,10 +1,12 @@
 # 6.1
 
+### Vocabulary
+1. Cross Join- Returns the Cartesian product from two tables.
+2. Natural Join- Joins two tables based on the same column name.
 
-Cross Join- Returns the Cartesian product from two tables.
-Natural Join- Joins two tables based on the same column name.
 
-1.Create a cross-join that displays the last name and department name from the employees and
+### Exercise
+1. Create a cross-join that displays the last name and department name from the employees and
 departments tables.
 ```sql
 SELECT last_name, department_name
@@ -28,11 +30,12 @@ From Departments NATURAL JOIN locations
 Where (department_id = 20 OR department_id = 50;
 ```
 
-#6.2
+# 6.2
+### Vocabulary
+1. USING - Allows a natural join based on an arbitrary condition or two columns with different names.
+2. ON clause -Performs an equijoin based on one specified column name
 
-USING -Allows a natural join based on an arbitrary condition or two columns with different names.
--Performs an equijoin based on one specified column name
-
+### Exercise
 1. Join the Oracle database locations and departments table using the location_id column. Limit the
 results to location 1400 only.
 ```sql
@@ -75,21 +78,19 @@ From employees JOIN jobs using (job_id)
 Where job_id = 'ST_CLERK';
 ```
 # 6.3
+### Vocabulary
 1. FUll OUTER - Performs a join on two tables, retrieves all the rows in the Left
 table, even if there is no match in the Right table. It also retrieves
 all the rows in the Right table, even if there is no match in the Left
 table.
-
 2. LEFT OUTER - A join that returns the unmatched rows as well as matched rows
 Performs a join on two tables, retrieves all the rows in the Left
 table even if there is no match in the Right table.
-
 3. RIGHT OUTER - Performs a join on two tables, retrieves all the rows
 in the Right table even if there is no match in the Left table.
-
 4. INNER JOIN - A join of two or more tables that returns only matched rows
 
-
+### Exercise
 1. Return the first name, last name, and department name for all employees including those employees not assigned to a department.
    ```sql
     SELECT e.last_name, d.department_id, d.department_name
@@ -125,25 +126,25 @@ if there is no date assigned for each shift description.
    From f_shifts d RIGHT OUTER JOIN f_shift_assignments a 
    on (d.code = a.code)
    ```
-#6.4  
+# 6.4 
+### Vocabulary
 1. Self Join -Joins a table to itself
-2. Retrieves data based on a natural hierarchical relationship between rows in a table
-3. Determines the number of steps down from the beginning row
-that should be returned by a hierarchical query
-4. Identifies the beginning row for a hierarchical query
-5. Specifies the relationship between parent rows and child rows of
-a hierarchical query
+2. Hierarchical queries - Retrieves data based on a natural hierarchical relationship between rows in a table
+3. LEVEL - Determines the number of steps down from the beginning row that should be returned by a hierarchical query
+4. START - Identifies the beginning row for a hierarchical query
+5. CONNECT BY PRIOR - Specifies the relationship between parent rows and child rows of a hierarchical query
 
+### Exercise
 1. Display the employee’s last name and employee number along with the manager’s last name and
 manager number. Label the columns: Employee, Emp#, Manager, and Mgr#, respectively.
-  ```sql
+   ```sql
     SELECT w.last_name as "Employee", w.employee_id as "Emp#", m.last_name AS "Manager", w.manager_id as "Mgr#" 
     FROM employees w JOIN employees m
     ON (worker.manager_id = manager.employee_id);
    ```
 2. Modify question 1 to display all employees and their managers, even if the employee does not
 have a manager. Order the list alphabetically by the last name of the employee.
-  ```sql
+   ```sql
     SELECT w.last_name as "Employee", w.employee_id as "Emp#", m.last_name AS "Manager", w.manager_id as "Mgr#" 
     FROM employees w LEFT OUTER JOIN employees m
     ON (worker.manager_id = manager.employee_id);
@@ -176,22 +177,23 @@ and department id in the report.
 6. Create a report that shows the organization chart for the entire employee table. Write the report
 so that each level will indent each employee 2 spaces. Since Oracle Application Express cannot
 display the spaces in front of the column, use - (minus) instead.
-  ```sql
-  SELECT LPAD(last_name, LENGTH(last_name)+
-  (LEVEL*2)-2,'-') AS "Org_Chart"
-  FROM employees
-  START WITH last_name = 'King'
-  CONNECT BY PRIOR employee_id = manager_id;
-  ```
+   ```sql
+    SELECT LPAD(last_name, LENGTH(last_name)+
+    (LEVEL*2)-2,'-') AS "Org_Chart"
+    FROM employees
+    START WITH last_name = 'King'
+    CONNECT BY PRIOR employee_id = manager_id;
+   ```
 7. Re-write the report from 6 to exclude De Haan and all the people working for him.
- ```sql
-  SELECT LPAD(last_name, LENGTH(last_name)+
-  (LEVEL*2)-2,'-') AS "Org_Chart"
-  FROM employees
-  START WITH last_name = 'King'
-  CONNECT BY PRIOR employee_id = manager_id;
-  AND last_name != 'De Haan'
-  ```
+   ```sql
+    SELECT LPAD(last_name, LENGTH(last_name)+
+    (LEVEL*2)-2,'-') AS "Org_Chart"
+    FROM employees
+    START WITH last_name = 'King'
+    CONNECT BY PRIOR employee_id = manager_id;
+    AND last_name != 'De Haan'
+   ```
+
 
 
 
