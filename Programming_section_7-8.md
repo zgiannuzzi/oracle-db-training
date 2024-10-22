@@ -190,34 +190,60 @@ Which code is valid as part of an SQL query?
 3. Returns the number of unique non-null values in the expression column.
 
 1. How many songs are listed in the DJs on Demand D_SONGS table?
-2. In how many different location types has DJs on Demand had venues?
-3. The d_track_listings table in the DJs on Demand database has a song_id column and a
+   ```sql
+    SELECT COUNT(ID)
+    FROM D_SONGS
+   ```
+3. In how many different location types has DJs on Demand had venues?
+   ```sql
+    SELECT COUNT(DISTINCT loc_type)
+    FROM d_venues 
+   ```
+4. The d_track_listings table in the DJs on Demand database has a song_id column and a
 cd_number column. How many song IDs are in the table and how many different CD numbers are
 in the table?
-4. How many of the DJs on Demand customers have email addresses?
-5. Some of the partners in DJs on Demand do not have authorized expense amounts (auth_expense_amt). How many partners do have this privilege?
-
-6. What values will be returned when the statement below is issued?
-SELECT COUNT(shoe_color), COUNT(DISTINCT shoe_color)
-FROM shoes;
-7. Create a query that will convert any null values in the auth_expense_amt column on the DJs on
+   ```sql
+    SELECT COUNT(song_ids), COUNT(DISTINCT cd_number)
+    FROM d_track_listings  
+   ```
+5. How many of the DJs on Demand customers have email addresses?
+   ```sql
+    SELECT COUNT(EMAIL)
+    FROM d_clients 
+   ```
+6. Some of the partners in DJs on Demand do not have authorized expense amounts (auth_expense_amt). How many partners do have this privilege?
+   ```sql
+    SELECT COUNT(auth_expense_amt)
+    FROM d_partners 
+   ```
+7. What values will be returned when the statement below is issued?
+  ```sql
+    SELECT COUNT(shoe_color), COUNT(DISTINCT shoe_color)
+    FROM shoes; 
+   ```
+   - count of all the show colors and a count of all distinct colors
+8. Create a query that will convert any null values in the auth_expense_amt column on the DJs on
 Demand D_PARTNERS table to 100000 and find the average of the values in this column. Round
 the result to two decimal places.
-8. Which statement(s) is/are True about the following SQL statement:
+  ```sql
+    SELECT ROUND(AVG(NVL(auth_expense_amt, 100000),2))
+    FROM d_partners ; 
+   ```
+9. Which statement(s) is/are True about the following SQL statement:
 SELECT AVG(NVL(selling_bonus, 0.10))
 FROM bonuses;
-_____ a. The datatypes of the values in the NVL clause can be any datatype except date data.
-_____ b. If the selling_bonus column has a null value, 0.10 will be substituted.
-_____ c. There will be no null values in the selling_bonus column when the average is calculated.
-_____ d. This statement will cause an error. There cannot be two functions in the SELECT
-statement.
-9. Which of the following statements is/are TRUE about the following query?
+1. FALSE - The datatypes of the values in the NVL clause can be any datatype except date data.
+2. TRUE - If the selling_bonus column has a null value, 0.10 will be substituted.
+3. TRUE - There will be no null values in the selling_bonus column when the average is calculated.
+4. FALSE - This statement will cause an error. There cannot be two functions in the SELECT statement.
+
+11. Which of the following statements is/are TRUE about the following query?
 SELECT DISTINCT colors, sizes
 FROM items;
-_____ a. Each color will appear only once in the result set.
-_____ b. Each size will appear only once in the result set.
-_____ c. Unique combinations of color and size will appear only once in the result set.
-_____ d. Each color and size combination will appear more than once in the result set.
+1. FALSE - Each color will appear only once in the result set.
+2. FALSE - Each size will appear only once in the result set.
+3. TRUE - Unique combinations of color and size will appear only once in the result set.
+4. FALSE - Each color and size combination will appear more than once in the result set.
 
 
 
