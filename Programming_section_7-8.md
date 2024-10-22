@@ -103,6 +103,148 @@
    FROM d_cds, d_songs
    WHERE d_cds.number = d_track_listings.cd_number(+);
   ```
+## 8.1 
+
+1. AVG - Calculates average value excluding nulls
+2. COUNT - Returns the number of rows with non-null values for the expression
+3. VARRIANCE - For two sets of data with approximately the same mean, the greater the spread, the greater the standard deviation.
+4. Operate on sets of rows to give one result per group
+5. MIN - Returns minimum value ignoring nulls
+6. STDDEVUsed with columns that store numeric data to calculate the spread of data around the mean
+7. SUM - Calculates the sum ignoring null values
+8. MAX- Returns the maximum value ignoring nulls
+9. To gather into a sum or whole
+
+
+2. Create a query that will show the average cost of the DJs on Demand events. Round to two decimal places.
+   ```sql
+      select ROUND(AVG(COST),2)
+      from d_events 
+   ```
+3. Find the average salary for Global Fast Foods staff members whose manager ID is 19.
+   ```sql
+      select AVG(Salary)
+      from f_staffs Where manager_id = 19 
+   ```
+
+4. Find the sum of the salaries for Global Fast Foods staff members whose IDs are 12 and 9.
+   ```sql
+      select SUM(Salary)
+      from f_staffs Where (id = 12 or id = 9) 
+   ```
+5. Using the Oracle database, select the lowest salary, the most recent hire date, the last name of
+the person who is at the top of an alphabetical list of employees, and the last name of the person
+who is at the bottom of an alphabetical list of employees. Select only employees who are in
+departments 50 or 60.
+   ```sql
+      select min(Salary) , max(hire_data), min(last_name), max(last_name)
+      from employees Where (department_id = 50 or department_id = 60) 
+   ```
+6. Your new Internet business has had a good year financially. You have had 1,289 orders this year.
+Your customer order table has a column named total_sales. If you submit the following query, how
+many rows will be returned?
+   ```sql
+    SELECT sum(total_sales)
+    FROM orders;
+   ```
+   - 1 row will be returned
+7. You were asked to create a report of the average salaries for all employees in each division of the
+company. Some employees in your company are paid hourly instead of by salary. When you ran
+the report, it seemed as though the averages were not what you expected—they were much
+higher than you thought! What could have been the cause?
+ - any onw who is salaried is probably paid more therefor when you take the average of the numbers you wind up with a much higher salary.
+
+8. Employees of Global Fast Foods have birth dates of July 1, 1980, March 19, 1979, and March 30, 1969. If you select MIN(birthdate), which date will be returned?
+      - March 30, 1969
+
+9. Create a query that will return the average order total for all Global Fast Foods orders from
+January 1, 2002, to December 21, 2002.
+   ```sql
+    SELECT AVG(order_total)
+    FROM orders Where order_date Between '01-01-2002' and '12-21-2002';
+   ```
+
+10. What was the hire date of the last Oracle employee hired?
+   ```sql
+    SELECT MAX(hire_date)
+    From Employees 
+   ```
+
+11. In the following SELECT clause, which value returned by the SELECT statement will be larger?
+SELECT SUM(operating_cost), AVG(operating_cost)
+
+12. Refer to the DJs on Demand database D_EVENTS table:
+Which code is valid as part of an SQL query?
+1. VALID - FROM event_date
+2. VALID - SELECT SUM(cost)
+3. NOT VALID - SELECT SUM(event_date)
+4. VALID - SELECT AVG(cost) AS "Expense"
+5. VALID - WHERE MIN(id) = 100
+6. NOT VALID - SELECT MAX(AVG(cost))
+7. VALID - SELECT MIN(event_date)
+
+## 8.2 
+
+1. Returns the number of non-null values in the expression column
+2. The keyword used to return only non-duplicate values orcombinations of non-duplicate values in a query.
+3. Returns the number of unique non-null values in the expression column.
+
+1. How many songs are listed in the DJs on Demand D_SONGS table?
+2. In how many different location types has DJs on Demand had venues?
+3. The d_track_listings table in the DJs on Demand database has a song_id column and a
+cd_number column. How many song IDs are in the table and how many different CD numbers are
+in the table?
+4. How many of the DJs on Demand customers have email addresses?
+5. Some of the partners in DJs on Demand do not have authorized expense amounts (auth_expense_amt). How many partners do have this privilege?
+
+6. What values will be returned when the statement below is issued?
+SELECT COUNT(shoe_color), COUNT(DISTINCT shoe_color)
+FROM shoes;
+7. Create a query that will convert any null values in the auth_expense_amt column on the DJs on
+Demand D_PARTNERS table to 100000 and find the average of the values in this column. Round
+the result to two decimal places.
+8. Which statement(s) is/are True about the following SQL statement:
+SELECT AVG(NVL(selling_bonus, 0.10))
+FROM bonuses;
+_____ a. The datatypes of the values in the NVL clause can be any datatype except date data.
+_____ b. If the selling_bonus column has a null value, 0.10 will be substituted.
+_____ c. There will be no null values in the selling_bonus column when the average is calculated.
+_____ d. This statement will cause an error. There cannot be two functions in the SELECT
+statement.
+9. Which of the following statements is/are TRUE about the following query?
+SELECT DISTINCT colors, sizes
+FROM items;
+_____ a. Each color will appear only once in the result set.
+_____ b. Each size will appear only once in the result set.
+_____ c. Unique combinations of color and size will appear only once in the result set.
+_____ d. Each color and size combination will appear more than once in the result set.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
