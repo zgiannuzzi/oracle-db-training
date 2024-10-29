@@ -21,59 +21,117 @@ ORDER BY last_name DESC ;
 ```
 2. Each of the following SQL queries has an error. Find the error and correct it. Use Oracle
 Application Express to verify that your corrections produce the desired results.
-a. SELECT manager_id
+a.
+```sql
+SELECT manager_id
 FROM employees
-WHERE AVG(salary) < 16000
 GROUP BY manager_id;
-b. SELECT cd_number, COUNT(title)
+WHERE AVG(salary) < 16000
+```
+b. 
+```sql
+SELECT cd_number, COUNT(title)
 FROM d_cds
 WHERE cd_number < 93;
-c. SELECT ID, MAX(ID), artist AS Artist
+```
+c.
+```sql
+SELECT ID, MAX(ID), artist AS Artist
 FROM d_songs
-WHERE duration IN('3 min', '6 min', '10 min')
-HAVING ID < 50
 GROUP by ID;
-d. SELECT loc_type, rental_fee AS Fee
+HAVING ID < 50
+WHERE duration IN('3 min', '6 min', '10 min')
+```
+d.
+```sql
+SELECT loc_type, rental_fee AS Fee
 FROM d_venues
-WHERE id <100
 GROUP BY "Fee"
+WHERE id < 100
 ORDER BY 2;
-
-3. Rewrite the following query to accomplish the same result:
+```
+4. Rewrite the following query to accomplish the same result:
+```sql
 SELECT DISTINCT MAX(song_id)
 FROM d_track_listings
-WHERE track IN ( 1, 2, 3);
+Group BY MAX(song_ID)
+WHERE track <= 3
+```
+5. Indicate True or False
+1. TRUE - If you include a group function and any other individual columns in a SELECT clause, then each individual column must also appear in the GROUP BY clause.
+2. FALSE You can use a column alias in the GROUP BY clause.
+3. FALSE The GROUP BY clause always includes a group function.
 
-4. Indicate True or False
-_____ a. If you include a group function and any other individual columns in a SELECT clause,
-then each individual column must also appear in the GROUP BY clause.
-_____ b. You can use a column alias in the GROUP BY clause.
-_____ c. The GROUP BY clause always includes a group function.
-
-5. Write a query that will return both the maximum and minimum average salary grouped by
+6. Write a query that will return both the maximum and minimum average salary grouped by
 department from the employees table.
-
-6. Write a query that will return the average of the maximum salaries in each department for the
+```sql
+SELECT max(avg(salary)), min(avg(salary))
+FROM employees
+GROUP by department_id;
+```
+7. Write a query that will return the average of the maximum salaries in each department for the
 employees table.
-
-
-
+```sql
+SELECT max(avg(salary))
+FROM employees
+GROUP by department_id;
+```
 
 ## 9.2
 
-Used to create subtotals that roll up from the most detailed level
-to a grand total, following a grouping list specified in the clause
-An extension to the GROUP BY clause like ROLLUP that
-produces cross-tabulation reports
-Used to specify multiple groupings of data
-Try It / Solve It
+1. Rollup -Used to create subtotals that roll up from the most detailed level to a grand total, following a grouping list specified in the clause
+2. CUBE - An extension to the GROUP BY clause like ROLLUP that produces cross-tabulation reports
+3. GROUPING SETS - Used to specify multiple groupings of data
+
 1. Within the Employees table, each manager_id is the manager of one or more employees who
 each have a job_id and earn a salary. For each manager, what is the total salary earned by all of
 the employees within each job_id? Write a query to display the Manager_id, job_id, and total
 salary. Include in the result the subtotal salary for each manager and a grand total of all salaries.
+```sql
+SELECT manager_id, job_id, SUM(salary)
+FROM employees
+GROUP BY ROLLUP (manager_id, job_id);
+```
+
 2. Amend the previous query to also include a subtotal salary for each job_id regardless of the
 manager_id.
+```sql
+SELECT manager_id, job_id, SUM(salary)
+FROM employees
+GROUP BY Cube (manager_id, job_id);
+```
+
+
 3. Using GROUPING SETS, write a query to show the following groupings:
 • department_id, manager_id, job_id
 • manager_id, job_id
 • department_id, manager_id
+
+
+
+
+
+operator that returns all rows from both tables and eliminates
+duplicates
+columns that were made up to match queries in another table
+that are not in both tables
+operator that returns all rows from both tables, including
+duplicates
+used to combine results into one single result from multiple
+SELECT statements
+operator that returns rows that are unique to each table
+operator that returns rows common to both tables
+Try It / Solve It
+1. Name the different Set operators?
+2. Write one query to return the employee_id, job_id, hire_date, and department_id of all employees
+and a second query listing employee_id, job_id, start_date, and department_id from the
+job_history table and combine the results as one single output. Make sure you suppress
+duplicates in the output.
+3. Amend the previous statement to not suppress duplicates and examine the output. How many
+extra rows did you get returned and which were they? Sort the output by employee_id to make it
+easier to spot.
+4. List all employees who have not changed jobs even once. (Such employees are not found in the
+job_history table)
+5. List the employees that HAVE changed their jobs at least once.
+6. Using the UNION operator, write a query that displays the employee_id, job_id, and salary of ALL
+present and past employees. If a salary is not found, then just display a 0 (zero) in its place.
