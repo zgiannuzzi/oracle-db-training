@@ -109,19 +109,15 @@ GROUP BY Cube (manager_id, job_id);
 
 
 
+## 9.3
 
+1. UNION operator that returns all rows from both tables and eliminates duplicates
+2. columns that were made up to match queries in another tablethat are not in both tables
+3. operator that returns all rows from both tables, includingduplicates
+4. used to combine results into one single result from multipleSELECT statements
+5. operator that returns rows that are unique to each table
+6. operator that returns rows common to both tables
 
-operator that returns all rows from both tables and eliminates
-duplicates
-columns that were made up to match queries in another table
-that are not in both tables
-operator that returns all rows from both tables, including
-duplicates
-used to combine results into one single result from multiple
-SELECT statements
-operator that returns rows that are unique to each table
-operator that returns rows common to both tables
-Try It / Solve It
 1. Name the different Set operators?
 2. Write one query to return the employee_id, job_id, hire_date, and department_id of all employees
 and a second query listing employee_id, job_id, start_date, and department_id from the
