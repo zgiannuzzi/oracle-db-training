@@ -111,23 +111,56 @@ GROUP BY Cube (manager_id, job_id);
 
 ## 9.3
 
-1. UNION operator that returns all rows from both tables and eliminates duplicates
-2. columns that were made up to match queries in another tablethat are not in both tables
-3. operator that returns all rows from both tables, includingduplicates
-4. used to combine results into one single result from multipleSELECT statements
-5. operator that returns rows that are unique to each table
-6. operator that returns rows common to both tables
+1. UNION - operator that returns all rows from both tables and eliminates duplicates
+2. - columns that were made up to match queries in another table that are not in both tables
+3. UNION ALL - operator that returns all rows from both tables, including duplicates
+4. Set Operators - used to combine results into one single result from multiple SELECT statements
+5. MINUS - operator that returns rows that are unique to each table
+6. INTERSECT - operator that returns rows common to both tables
 
 1. Name the different Set operators?
-2. Write one query to return the employee_id, job_id, hire_date, and department_id of all employees
+   - Union
+   - Union all
+   - minus
+   - instersect
+3. Write one query to return the employee_id, job_id, hire_date, and department_id of all employees
 and a second query listing employee_id, job_id, start_date, and department_id from the
 job_history table and combine the results as one single output. Make sure you suppress
 duplicates in the output.
-3. Amend the previous statement to not suppress duplicates and examine the output. How many
+```sql
+SELECT hire_date, employee_id, job_id, department_id 
+FROM employees
+UNION
+SELECT employee_id, job_id, start_date
+FROM job_history
+```
+5. Amend the previous statement to not suppress duplicates and examine the output. How many
 extra rows did you get returned and which were they? Sort the output by employee_id to make it
 easier to spot.
-4. List all employees who have not changed jobs even once. (Such employees are not found in the
+```sql
+SELECT hire_date, employee_id, job_id, department_id 
+FROM employees
+UNION ALL
+SELECT employee_id, job_id, start_date
+FROM job_history
+Order by employee_id
+```
+6. List all employees who have not changed jobs even once. (Such employees are not found in the
 job_history table)
-5. List the employees that HAVE changed their jobs at least once.
-6. Using the UNION operator, write a query that displays the employee_id, job_id, and salary of ALL
+```sql
+SELECT hire_date, employee_id, job_id
+FROM employees
+UNION 
+SELECT TO_DATE(null)employee_id, job_id, start_date
+FROM job_history
+```
+8. List the employees that HAVE changed their jobs at least once.
+```sql
+SELECT hire_date, employee_id, job_id
+FROM job_history
+UNION 
+SELECT employee_id, job_id, start_date
+FROM employees
+```
+9. Using the UNION operator, write a query that displays the employee_id, job_id, and salary of ALL
 present and past employees. If a salary is not found, then just display a 0 (zero) in its place.
