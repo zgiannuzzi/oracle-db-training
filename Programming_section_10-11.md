@@ -8,6 +8,8 @@
 6. An inner query that compares the multiple columns one at a time in different subqueries
 7. Another name for a subquery
 
+
+### Exercise 
 1. What is the purpose of using a subquery?
    - The subquery executes to find the information you don't know.
 2. What is a subquery?
