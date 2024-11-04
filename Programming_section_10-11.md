@@ -82,11 +82,133 @@ Seattle?
 2. False - A subquery can reference a table that is not included in the outer query’s FROM clause.
 3. TRUE - Single-row subqueries can return multiple values to the outer query.
 
+# 10.2
 
 
+1. Write a query to return all those employees who have a salary greater than that of Lorentz and are in the same department as Abel.
+   ```SQL
+    SELECT First_name, last_name, salary
+    FROM employees
+    WHERE salary >
+    (SELECT salary
+    FROM employees
+    WHERE first_name = "Lorentz")
+    AND
+    department_id = 
+   (select department_id
+    From employee
+    where laat_name = "abel" ;
+   ```
+2. Write a query to return all those employees who have the same job id as Rajs and were hired after Davies.
+
+3. What DJs on Demand events have the same theme code as event ID = 100?
+
+4. What is the staff type for those Global Fast Foods jobs that have a salary less than those of any Cook staff-type jobs?
+
+5. Write a query to return a list of department id’s and average salaries where the department’s average salary is greater than Ernst’s salary.
+
+6. Return the department ID and minimum salary of all employees, grouped by department ID, having a minimum salary greater than the minimum salary of those employees whose department ID is not equal to 50.
 
 
+# 10.3
+1. What will be returned by a query if it has a subquery that returns a null ?
+  - If IN or ANY are used, the outer query will return rows which match the non-null values, if all is used nothing is returned
 
+2. Write a query that returns jazz and pop songs. Write a multi-row subquery and use the d_songs
+and d_types tables. Include the id, title, duration, and the artist name.
+   ```sql
+      Select id, title, duration, name
+      from d_songs
+      Group by Type_code
+      where type_code =
+      (select code from d_types where code in (1,12))
+   ```
+3. Find the last names of all employees whose salaries are the same as the minimum salary for any
+department.
+   ```sql
+      Select department_id, MIN(salary)
+      From employees
+      GROUP BY department_id
+      HAVING MIN(salary) = 
+      (Select salary
+      From employees
+      Where department_id IN (10,20))
+      ORDER BY department_id;
+   ```
+4. Which Global Fast Foods employee earns the lowest salary? Hint: You can use either a single-
+row or a multiple-row subquery.
+   ```sql
+      Select department_id, MIN(salary), First_name, Last_name
+      From employees
+      GROUP BY department_id
+      HAVING MIN(salary) = ANY
+      (Select salary
+      From employees
+      Where department_id IN (10,20))
+      ORDER BY department_id;
+   ```
+5. Place the correct multiple-row comparison operators in the outer query WHERE clause of each of
+the following:
+
+1. Which CDs in our d_cds collection were produced before “Carpe Diem” was produced?
+ - WHERE year < in (SELECT year ...
+
+2. Which employees have salaries lower than any one of the programmers in the IT department?
+ - WHERE salary < in (SELECT salary ...
+
+3. What CD titles were produced in the same year as “Party Music for All Occasions” or “Carpe
+Diem”?
+ - WHERE year in (SELECT year ...
+
+4. What song title has a duration longer than every type code 77 title?
+WHERE duration > (SELECT duration ...
+
+
+6. If each WHERE clause is from the outer query, which of the following are true?
+- True WHERE size > ANY -- If the inner query returns sizes ranging from 8 to 12, the value 9
+could be returned in the outer query.
+- False WHERE book_number IN -- If the inner query returns books numbered 102, 105, 437,
+and 225 then 325 could be returned in the outer query.
+- True WHERE score <= ALL -- If the inner query returns the scores 89, 98, 65, and 72, then 82
+could be returned in the outer query.
+- False WHERE color NOT IN -- If the inner query returns red, green, blue, black, and then the
+outer query could return white.
+- True WHERE game_date = ANY -- If the inner query returns 05-Jun-1997, 10-Dec-2002, and
+2-Jan-2004, then the outer query could return 10-Sep-2002.
+
+7. The goal of the following query is to display the minimum salary for each department whose
+minimum salary is less than the lowest salary of the employees in department 50. However, the
+subquery does not execute because it has five errors. Find them, correct them, and run the query.
+```sql
+SELECT department_id
+FROM employees
+GROUP BY department_id
+HAVING MIN(salary) >
+(SELECT MIN(salary)
+WHERE department_id < 50;)
+WHERE MIN(salary)
+```
+8. Which statements are true about the subquery below?
+SELECT employee_id, last_name
+FROM employees
+WHERE salary =
+(SELECT MIN(salary)
+FROM employees
+GROUP BY department_id);
+- True The inner query could be eliminated simply by changing the WHERE clause to
+WHERE MIN(salary).
+- False The query wants the names of employees who make the same salary as the smallest
+salary in any department.
+- False The query first selects the employee ID and last name, and then compares that to the
+salaries in every department.
+- False This query will not execute.
+
+9. Write a pair-wise subquery listing the last_name, first_name, department_id, and manager_id for
+all employees that have the same department_ id and manager_id as employee 141. Exclude
+employee 141 from the result set.
+
+10. Write a non-pair-wise subquery listing the last_name, first_name, department_id, and manager_id
+for all employees that have the same department_ id and manager_id as employee 141.
 
 
 
