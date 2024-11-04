@@ -210,7 +210,43 @@ employee 141 from the result set.
 10. Write a non-pair-wise subquery listing the last_name, first_name, department_id, and manager_id
 for all employees that have the same department_ id and manager_id as employee 141.
 
+## 10.4 
 
+1. Explain the main difference between correlated and non-correlated subqueries?
+  - A correlated subquery when the subquery references a column from a table referred to in the parent statement.
+
+2. Write a query that lists the highest earners for each department. Include the last_name,
+department_id, and the salary for each employee.
+```sql
+SELECT o.first_name,
+o.last_name, o.salary, o.department_id
+FROM employees o
+WHERE o.salary =
+(SELECT MAX(i.salary)
+FROM employees i
+WHERE i.department_id =
+o.department_id);
+```
+3. Examine the following select statement and finish it so that it will return the last_name,
+department_id, and salary of employees who have at least one person reporting to them. So we
+are effectively looking for managers only. In the partially written SELECT statement, the WHERE
+clause will work as it is. It is simply testing for the existence of a row in the subquery.
+```sql
+SELECT last_name,department_id,salary)
+FROM employees outer
+WHERE manager_id IN (SELECT manager_id
+FROM (manager) inner
+WHERE inner(manager_id) = inner(manager_id)
+order by department_id
+```
+Finish off the statement by sorting the rows on the department_id column.
+
+4. Using a WITH clause, write a SELECT statement to list the job_title of those jobs whose maximum
+salary is more than half the maximum salary of the entire company. Name your subquery
+MAX_CALC_SAL. Name the columns in the result JOB_TITLE and JOB_TOTAL, and sort the
+result on JOB_TOTAL in descending order.
+Hint: Examine the jobs table. You will need to join JOBS and EMPLOYEES to display the
+job_title.
 
 
 
