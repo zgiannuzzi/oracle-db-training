@@ -198,6 +198,121 @@ WHERE id = (select id from job history)
 ```
 ## 12.3
 
+### Exercise
+
+1. When would you want a DEFAULT value?
+   -In the event that a new row is inserted and no value for
+    the column is assigned, the default value will be
+    assigned instead of a null value.
+   - So your table does not contain null values
+
+
+2. Currently, the Global Foods F_PROMOTIONAL_MENUS table START_DATE column does not
+have SYSDATE set as DEFAULT. Your manager has decided she would like to be able to set the
+starting date of promotions to the current day for some entries. This will require three steps:
+
+- created table 
+- Altered start date 
+``` sql
+INSERT INTO copy_f_promotional 
+VALUES(120, ‘New Customer.’, 'Kim' ,DEFAULT ,'01-Jun-2005','10%');
+```
+
+3. Allison Plumb, the event planning manager for DJs on Demand, has just given you the following
+list of CDs she acquired from a company going out of business. She wants a new updated list of
+CDs in inventory in an hour, but she doesn’t want the original D_CDS table changed. Prepare an
+updated inventory list just for her.
+
+```sql
+
+
+```
+
+5. Run the following 3 statements to create 3 new tables for use in a Multi-table insert statement. All
+3 tables should be empty on creation, hence the WHERE 1=2 condition in the WHERE clause.
+
+## 13.1
+
+### Vocab
+
+1. Created and maintained by the Oracle Server and contains information about the database
+2. A collection of objects that are the logical structures that directly refer to the data in the database
+3. Specifies a preset value if a value is omitted in the INSERT statement
+4. Stores data; basic unit of storage composed of rows and columns
+5. Command use to make a new table
+
+### Exercise 
+1. Complete the GRADUATE CANDIDATE table instance chart. Credits is a foreign-key column
+referencing the requirements table
+
+- Student_id 
+  - Key type
+  - nulls/unique
+  - FK column
+  - Data type
+  - length 
+
+- last_name
+  - Key type
+  - nulls/unique
+  - FK column
+  - Data type
+  - length 
+
+- First_name
+  - Key type
+  - nulls/unique
+  - FK column
+  - Data type
+  - length 
+
+- Credits
+  - Key type
+  - nulls/unique
+  - FK column
+  - Data type
+  - length
+    
+- Graduation_date
+  - Key type
+  - nulls/unique
+  - FK column
+  - Data type
+  - length 
+2. Write the syntax to create the grad_candidates table.
+```sql
+CREATE TABLE "grad_candidates"
+  ("Student_id" NUMBER(6),
+   "last_name" Varchar2(20),
+   "first_name" Varchar2(20),
+   "credits" NUMBER(3),
+   "gradutation_date" DATE,
+```    
+3. Confirm creation of the table using DESCRIBE.
+```sql
+Describe  grad_candidates;
+```
+4. Create a new table using a subquery. Name the new table your last name -- e.g., smith_table.
+Using a subquery, copy grad_candidates into smith_table
+```sql
+COPY TABLE "grad_candidates"
+"giannuzzi"
+```
+5. Insert your personal data into the table created in question 4.
+```sql
+INSERT INTO giannuzzi
+Select * from grad_candidates
+```
+6. Query the data dictionary for each of the following:
+
+
+
+
+
+
+
+
+
 
 
 
