@@ -305,7 +305,139 @@ Select * from grad_candidates
 ```
 6. Query the data dictionary for each of the following:
 
+## 13.2 
 
+1. Allows time to be stored as an interval of years and months
+2. When a column is selected in a SQL statement the time is automatically converted to the user’s timezone
+3. Binary large object data up to 4 gigabytes
+4. Stores a time zone value as a displacement from Universal Coordinated Time or UCT
+5. Allows time to be stored as an interval of days to hours, minutes, and seconds
+6. Character data up to 4 gigabytes
+7. Allows the time to be stored as a date with fractional seconds
+
+### Exercise 
+
+1. Create tables using each of the listed time-zone data types, use your time-zone and one other in
+your examples. Answers will vary
+```sql
+CREATE TABLE question_1
+(first_column TIMESTAMP WITH LOCAL TIME ZONE,
+ second_column INTERVAL YEAR(3) TO MONTH,
+ third_column INTERVAL DAY(3) TO SECOND);
+
+Select * from question_1
+```
+- 1 with flights and how they are scheduled its important you are using the time zone where your flight is coming out of
+- 2 Delevery dates and times could be affected
+- 3 Meeetings and phone calls for being awarre of time differences
+
+### 13.3 
+
+1. Why is it important to be able to modify a table?
+   - saves time
+   - Flexibility
+2. CREATE a table called Artists.
+```sql
+CREATE TABLE Artists
+(artist_ID Number(3)
+ first_name Varchar2(20)
+ last_name  Varchar2(20)
+ band_name  Varchar2(35)
+ email Varchar2(35)
+ hourly_rate Number(3)
+
+
+insert into Artists
+VALUES(1, 'test' , 'testing' ,'The Hobbits','test@test.email',50);
+
+insert into Artists
+VALUES(2, 'test2' , 'testing2' ,'The bobbits','test2@test.email',80);
+
+Alter table "Artists" ADD CONSTRAINT "T_artist_FK"" FOREIGN KEY ("artist_id")
+DROP TABLE Artists
+Rename Artists to ARTISTS
+TRUNCATE TABLE ARTISTS
+COMMENT ON TABLE ARTISTS
+IS 'This is a table;
+```
+
+3. In your o_employees table, enter a new column called “Termination.” The datatype for the new
+column should be VARCHAR2. Set the DEFAULT for this column as SYSDATE to appear as
+character data in the format: February 20th, 2003.
+
+```sql
+ALTER TABLE o_employees
+ADD Termination varchar2(30) DEFAULT TO_DATE(SYSDATE,'mm-dd-yyyy');
+```
+4. Create a new column in the o_employees table called start_date. Use the TIMESTAMP WITH
+LOCAL TIME ZONE as the datatype
+
+```sql
+ALTER TABLE o_employees
+ADD start_date DATE TIMESTAMP WITH LOCAL TIME ZONE;
+```
+
+
+5. Truncate the o_jobs table. Then do a SELECT * statement.
+Are the columns still there? Is the data still there?
+```sql
+ALTER TABLE o_employees
+ADD start_date DATE TIMESTAMP WITH LOCAL TIME ZONE;
+```
+
+
+6. What is the distinction between TRUNCATE, DELETE, and DROP for tables?
+ - Truncating a table removes all rows from a table and releases the storage space used by that table
+ - Deleteing is the same as truncating but it does not remove storage space
+ - The DROP TABLE statement removes the definition of an Oracle table. Only the creator of the table or a user with DROP ANY TABLE privilege (usually only the DBA) can remove a table
+   
+7. List the changes that can and cannot be made to a column.
+ - Change the name
+ - Add a column
+ - remove a column 
+
+8. Add the following comment to the o_jobs table:
+```sql
+COMMENT ON TABLE o_jobs
+IS 'New job description added;
+```
+
+9. Rename the o_jobs table to o_job_description.
+```sql
+RENAME o_jobs to o_job_description
+```
+
+10. F_staffs table exercises
+11. Still working with the copy_f_staffs table, perform an update on the table
+
+- ```sql
+  Select * From copy_f_staffs
+  ```
+- ```sql
+  update copy_f_staffs
+  set salary = 500000
+  where ID = 12
+  commit 
+  ```
+- ```sql
+  Select * From copy_f_staffs
+  ```
+- ```sql
+  update copy_f_staffs
+  set salary = 2
+  where ID = 12
+  commit
+  ```
+
+- ```sql
+  Select * From copy_f_staffs
+  ```
+- ```sql
+   FLASHBACK TABLE copy_f_staffs TO BEFORE DROP;
+  ```
+- ```sql
+   FLASHBACK TABLE copy_f_staffs TO BEFORE DROP;
+  ```
 
 
 
