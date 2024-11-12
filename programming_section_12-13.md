@@ -3,10 +3,10 @@
 
 ### Vocabulary
 
-1. Someone doing “real work” with the computer, using it as a means rather than an end
-2. Consists of a collection of DML statements that form a logical unit of work.
-3. Fully and clearly expressed; leaving nothing implied
-4. Adds a new row to a table
+1. USER - Someone doing “real work” with the computer, using it as a means rather than an end
+2. TRANSACTION - Consists of a collection of DML statements that form a logical unit of work.
+3. Explicit - Fully and clearly expressed; leaving nothing implied
+4. INSERT INTO - Adds a new row to a table
 
 ## Exercise 
 
@@ -86,11 +86,11 @@ where job_id contains(job_id,"REP")
 
 ### Vocab
 
-1. Modifies existing rows in a table
-2. retrieves information from one table & uses the information toupdate another table
-3. Ensures that the data adheres to a predefined set of rules
-4. deletes information on a linked table based on what was deleted on the other table
-5. Removes existing rows from a table
+1. Update - Modifies existing rows in a table
+2. correlated subquery update - retrieves information from one table & uses the information toupdate another table
+3. Integrity Constraints - Ensures that the data adheres to a predefined set of rules
+4. correlated subquery delete - deletes information on a linked table based on what was deleted on the other table
+5. DELETE - Removes existing rows from a table
 
 ### Exercise
 
@@ -235,49 +235,49 @@ updated inventory list just for her.
 
 ### Vocab
 
-1. Created and maintained by the Oracle Server and contains information about the database
-2. A collection of objects that are the logical structures that directly refer to the data in the database
-3. Specifies a preset value if a value is omitted in the INSERT statement
-4. Stores data; basic unit of storage composed of rows and columns
-5. Command use to make a new table
+1. Data dictionary - Created and maintained by the Oracle Server and contains information about the database
+2. Schema - A collection of objects that are the logical structures that directly refer to the data in the database
+3. DEFAULT - Specifies a preset value if a value is omitted in the INSERT statement
+4. TABLE - Stores data; basic unit of storage composed of rows and columns
+5. CREATE Table - Command use to make a new table
 
 ### Exercise 
 1. Complete the GRADUATE CANDIDATE table instance chart. Credits is a foreign-key column
 referencing the requirements table
 
 - Student_id 
-  - Key type
-  - nulls/unique
+  - Key type PRIMARY KEY
+  - nulls/unique NO/YES
   - FK column
-  - Data type
+  - Data type - NUMBER
   - length 
 
 - last_name
   - Key type
-  - nulls/unique
+  - nulls/unique NO
   - FK column
-  - Data type
-  - length 
+  - Data type VARCHAR (2)
+  - length 30
 
 - First_name
   - Key type
-  - nulls/unique
+  - nulls/unique NO
   - FK column
-  - Data type
-  - length 
+  - Data type VARCHAR
+  - length 30
 
 - Credits
-  - Key type
-  - nulls/unique
-  - FK column
-  - Data type
-  - length
+  - Key type foreign key
+  - nulls/unique NO 
+  - FK column 
+  - Data type NUMBER 
+  - length 3
     
 - Graduation_date
   - Key type
   - nulls/unique
   - FK column
-  - Data type
+  - Data type DATE
   - length 
 2. Write the syntax to create the grad_candidates table.
 ```sql
@@ -307,13 +307,13 @@ Select * from grad_candidates
 
 ## 13.2 
 
-1. Allows time to be stored as an interval of years and months
-2. When a column is selected in a SQL statement the time is automatically converted to the user’s timezone
+1. INTERVAL YEAR TO MONTH DATE Allows time to be stored as an interval of years and months
+2. TIMESTAMP WITH TIME ZONE - When a column is selected in a SQL statement the time is automatically converted to the user’s timezone
 3. Binary large object data up to 4 gigabytes
 4. Stores a time zone value as a displacement from Universal Coordinated Time or UCT
-5. Allows time to be stored as an interval of days to hours, minutes, and seconds
-6. Character data up to 4 gigabytes
-7. Allows the time to be stored as a date with fractional seconds
+5. TIMESTAMP - Allows time to be stored as an interval of days to hours, minutes, and seconds
+6. VARCHAR2 - Character data up to 4 gigabytes
+7. NTERVAL DAY TO SECOND - Allows the time to be stored as a date with fractional seconds
 
 ### Exercise 
 
