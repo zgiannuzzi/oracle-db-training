@@ -134,6 +134,73 @@ WHERE ID = 9
 ```
 4. Add the new customers shown below to the copy_f_customers table. You may already have
 added Katie Hernandez. Will you be able to add all these records successfully?
+- Last query would not work becuase zip code cannot be null
+```sql
+INSERT INTO copy_f_customers
+VALUES(145, 'katie', 'Hernandez' ,'92 chico way','los angeles','CA',98008, '8586667641');
+
+INSERT INTO copy_f_customers
+VALUES(145, 'katie', 'Hernandez' ,'92 chico way','DENVER','CO',80291, '7193343523');
+
+INSERT INTO copy_f_customers
+VALUES(225, 'Devin', 'Spode' ,'1923 Silverado','los angeles','CA',98008, '8586667641');
+
+INSERT INTO copy_f_customers
+VALUES(225, 'Adam', 'Zurn' ,'5 Admiral Way','Seattle','WA', '4258879009');
+```
+
+5. Sue Doe has been an outstanding Global Foods staff member and has been given a salary raise.
+She will now be paid the same as Bob Miller. Update her record in copy_f_staffs.
+```sql
+UPDATE copy_f_staffs
+Set Salary = (select salary from copy_f_staffs where ID = 9)
+where ID = 12
+```
+
+6. Global Fast Foods is expanding their staff. The manager, Monique Tuttle, has hired Kai Kim. Not
+all information is available at this time, but add the information shown here
+INSERT INTO copy_f_customers
+```sql
+INSERT INTO copy_f_staff
+VALUES(25, 'Kai', 'Kim' ,TO_DATE('03-11-1998','dd-mm-yyyy'),6.75,'Order taker');
+```
+
+7. Now that all the information is available for Kai Kim, update his Global Fast Foods record to
+include the following: Kai will have the same manager as Sue Doe. He does not qualify for
+overtime. Leave the values for training, manager budget, and manager target as null.
+```sql
+UPDATE copy_f_staffs
+Set Manager_Id = (select Manager_id from copy_f_staffs where ID = 12)
+where ID = 25
+```
+8. Execute the following SQL statement. Record your results.
+```sql
+DELETE from departments
+WHERE department_id = 60;
+
+#Removes IT department from departments table 
+```
+
+9. Kim Kai has decided to go back to college and does not have the time to work and go to school.
+Delete him from the Global Fast Foods staff. Verify that the change was made.
+
+```sql
+DELETE from copy_f_staffs
+WHERE id = 25;
+```
+10. Create a copy of the employees table and call it lesson7_emp;
+Once this table exists, write a correlated delete statement that will delete any employees from the
+lesson7_employees table that also exist in the job_history table.
+
+```sql
+DELETE from lesson7_emp
+WHERE id = (select id from job history)
+```
+## 12.3
+
+
+
+
 
 
 
