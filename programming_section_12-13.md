@@ -84,15 +84,56 @@ where job_id contains(job_id,"REP")
 ## 12.2 
 
 
+### Vocab
+
+1. Modifies existing rows in a table
+2. retrieves information from one table & uses the information toupdate another table
+3. Ensures that the data adheres to a predefined set of rules
+4. deletes information on a linked table based on what was deleted on the other table
+5. Removes existing rows from a table
+
+### Exercise
+
+1. Monique Tuttle, the manager of Global Fast Foods, sent a memo requesting an immediate change
+in prices. The price for a strawberry shake will be raised from $3.59 to $3.75, and the price for
+fries will increase to $1.20. Make these changes to the copy_f_food_items table.
+
+```sql
+UPDATE copy_f_food_items 
+SET price = 3.75
+WHERE description = 'Strawberry Shake'
+
+UPDATE copy_f_food_items 
+SET price = 1.20
+WHERE description = 'Fries'
+```
+2. Bob Miller and Sue Doe have been outstanding employees at Global Fast Foods. Management
+has decided to reward them by increasing their overtime pay. Bob Miller will receive an additional
+$0.75 per hour and Sue Doe will receive an additional $0.85 per hour. Update the copy_f_staffs
+table to show these new values. (Note: Bob Miller currently doesn’t get overtime pay. What
+function do you need to use to convert a null value to 0?)
+
+```sql
+UPDATE copy_f_staffs
+SET overtime_rate = Overtime_rate + 0.75
+WHERE ID = 12 
+
+UPDATE copy_f_staffs
+SET overtime_rate = Overtime_rate + 0.85
+WHERE ID = 9 
+```
+
+3. Add the orders shown to the Global Fast Foods copy_f_orders table:
+
+```sql
+ Insert into copy_f_orders
+ (5678,TO_DATE('09-23-2004','mm-dd-yyyy'),145.98,225,12);
 
 
 
-
-
-
-
-
-
+```
+4. Add the new customers shown below to the copy_f_customers table. You may already have
+added Katie Hernandez. Will you be able to add all these records successfully?
 
 
 
