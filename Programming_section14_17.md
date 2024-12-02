@@ -248,6 +248,118 @@ salaries. The department managers, however, need to know the minimum, maximum, a
 average salaries, grouped by department. Use the Oracle database to prepare a view that
 displays the needed information for department managers.
 
+# 15.2 
+
+## Vocabulary 
+1. Rownum -  pseudocolumn which assigns a sequential value starting with 1 to each of the rows returned from the subquery
+2.  With check option Specifies that INSERTS and UPDATES performed through the view can’t create rows which the view cannot select
+3. with read only -Ensures that no DML operations can be performed on this view
+
+### Exercise 
+
+1. Query the data dictionary USER_UPDATABLE_COLUMNS to make sure the columns in the base
+tables will allow UPDATE, INSERT, or DELETE. Use a SELECT statement. All table names in the
+data dictionary are stored in uppercase.
+
+2. Use the CREATE or REPLACE option to create a view of all the columns in the copy_d_songs
+table called view_copy_d_songs.
+```sql
+CREATE OR REPLACE VIEW view_copy_d_songs AS
+SELECT * FROM copy_d_songs;
+```
+3. Use view_copy_d_songs to INSERT the following data into the underlying copy_d_songs table.
+Execute a SELECT * from copy_d_songs to verify your DML command. See the graphic.
+```sql
+INSERT INTO view_copy_d_songs(id,title,duration,artist,type_code)
+VALUES(88,'Mello Jello','2 min','The What',4);
+```
+
+4. Create a view based on the DJs on Demand COPY_D_CDS table. Name the view
+read_copy_d_cds. Select all columns to be included in the view. Add a WHERE clause to restrict
+the year to 2000. Add the WITH READ ONLY option.
+```sql
+CREATE OR REPLACE VIEW read_copy_d_cds  AS
+SELECT * FROM copy_d_cds where year = '2000'
+WITH READ ONLY ;
+```
+5. Using the read_copy_d_cds view, execute a DELETE FROM read_copy_d_cds WHERE
+cd_number = 90;
+
+6. Use REPLACE to modify read_copy_d_cds. Replace the READ ONLY option with WITH CHECK
+OPTION CONSTRAINT ck_read_copy_d_cds. Execute a SELECT * statement to verify that the
+view exists.
+```sql
+REPLACE VIEW read_copy_d_cds  AS
+SELECT * FROM copy_d_cds
+WHERE year = '2000'
+WITH CHECK OPTION CONSTRAINT ck_read_copy_d_cds;
+```
+7. Use the read_copy_d_cds view to delete any CD of year 2000 from the underlying copy_d_cds.
+```sql
+DELETE FROM read_copy_d_cds
+WHERE year = '2000';
+```
+8. Use the read_copy_d_cds view to delete cd_number 90 from the underlying copy_d_cds table.
+```sql
+DELETE FROM read_copy_d_cds
+WHERE cd = 90;
+```
+9. Use the read_copy_d_cds view to delete year 2001 records.
+```sql
+DELETE FROM read_copy_d_cds
+WHERE year = '2001';
+```
+10. Execute a SELECT * statement for the base table copy_d_cds. What rows were deleted?
+
+11. What are the restrictions on modifying data through a view?
+
+12. What is Moore’s Law? Do you consider that it will continue to apply indefinitely? Support your
+opinion with research from the internet.
+  - The niumber of transistors on a computer chip roughly doubles every 2 years
+13. What is the “singularity” in terms of computing?
+    - Technology grows so much that it is no longer controllable 
+
+
+# 15.3 
+
+## Vocabulary 
+
+1. Top n - Asks for the N largest or smallest values in a column
+2. DROP - Removes a view
+3. INLINE Subquery with an alias that can be used within a SQL statement
+
+# Exercise 
+1. Create a view from the copy_d_songs table called view_copy_d_songs that includes only the title
+and artist. Execute a SELECT * statement to verify that the view exists.
+```sql
+CREATE VIEW view_copy_d_songs AS
+SELECT title, artist FROM copy_d_songs;
+```
+2. Issue a DROP view_copy_d_songs. Execute a SELECT * statement to verify that the view has
+been deleted.
+```sql
+DROP VIEW view_copy_d_songs 
+SELECT * FROM copy_d_songs;
+```
+3. Create a query that selects the last name and salary from the Oracle database. Rank the salaries
+from highest to lowest for the top three employees.
+```sql
+SELECT last_name, salary FROM employees ORDER BY salary DESC
+```
+4. Construct an inline view from the Oracle database that lists the last name, salary, department ID,
+and maximum salary for each department. Hint: One query will need to calculate maximum salary
+by department ID.
+
+5. Create a query that will return the staff members of Global Fast Foods ranked by salary from
+lowest to highest.
+```sql
+SELECT ROWNUM , last_name, salary from f_staffs ORDER BY salary);
+```
+# 16.1
+
+
+
+
 
 
 
