@@ -128,9 +128,125 @@ a. ON DELETE CASCADE
 b. ON DELETE SET NULL
 8. What are the restrictions on defining a CHECK constraint?
 
+# 14.3 
+
+## Vocabulary 
+
+1. DISABLE To deactivate an integrity constraint
+2. CASCADE Disables dependent integrity constraints
+3. ALTER To add, modify, or drop columns from a table
+4. ENABLE To activate an integrity constraint currently disabled
+5. DROP Removes a constraint from a table
+6. DROP COLUMN Allows user to delete a column from a table
+7. CASCADE Defines the actions the database server takes when a user
+attempts to delete or update a key to which existing foreign keys
+point
 
 
+## Exercise 
 
+1. What are four functions that an ALTER statement can perform on constraints?
+- ADD 
+- DROP
+- ENABLE
+- DISABLE
+        
+2. Since the tables are copies of the original tables, the integrity rules are not passed onto the new
+tables; only the column datatype definitions remain. You will need to add a PRIMARY KEY
+constraint to the copy_d_clients table. Name the primary key copy_d_clients_pk . What is the
+syntax you used to create the PRIMARY KEY constraint to the copy_d_clients.table?
+```sql
+ALTER TABLE copy_d_clients
+ADD  CONSTRAINT copy_d__pk PRIMARY KEY (client_number);
+```
+3. Create a FOREIGN KEY constraint in the copy_d_events table. Name the foreign key
+copy_d_events_fk. This key references the copy_d_clients table client_number column. What is
+the syntax you used to create the FOREIGN KEY constraint in the copy_d_events table?
+```sql
+ALTER TABLE copy_d_events 
+ADD CONSTRAINT copy_d_fk FOREIGN KEY;
+```
+4. Use a SELECT statement to verify the constraint names for each of the tables. Note that the
+tablenames must be capitalized.
+a. The constraint name for the primary key in the copy_d_clients table is _______________.
+b. The constraint name for the foreign key in the copy_d_events table is _______________.
+
+5. Drop the PRIMARY KEY constraint on the copy_d_clients table. Explain your results.
+```sql
+ALTER TABLE copy_d_clients
+DROP CONSTRAINT COPY_D_PK  ;
+```
+6. Add the following event to the copy_d_events table. Explain your results.
+140 Cline Bas Mitzvah 15-Jul-2004 Church and Private Home formal 4500 105 87 77 7125
+```sql
+copy_d_events(id,name,event_date,description,cost,venue_id,package_code,theme_code,client_number)
+VALUES(140,'Cline Bas Mitzvah',TO_DATE('15-Jul-2004','dd-Mon-yyyy'),'Church and Private Home formal',4500,105,87,77,7125);
+```
+
+7. Create an ALTER TABLE query to disable the primary key in the copy_d_clients table. Then add
+the values from #6 to the copy_d_events table. Explain your results.
+```sql
+ALTER TABLE copy_d_clients
+DISABLE CONSTRAINT COPY_D_PK CASCADE;
+```
+8. Repeat question 6: Insert the new values in the copy_d_events table. Explain your results.
+
+9. Enable the primary-key constraint in the copy_d_clients table. Explain your results.
+```sql
+ALTER TABLE copy_d_clients
+ENABLE CONSTRAINT COPY_D_PK ;
+```
+10. If you wanted to enable the foreign-key column and reestablish the referential integrity between
+these two tables, what must be done?
+
+# 15.1 
+Creating Views
+
+1. View - A subset of data from one or more tables that is generated from a query and stored as a virtual table
+2. View_name - Name of view
+3. FORCE - Creates a view regardless of whether or not the base tables exist
+4. SIMPLE - Derives data from a table, no functions or groups, performs DML operations through the view
+5. NOFORCE - Creates the view only if the base table exists
+6. CREATE VIEW - Statement used to create a new view
+7. ALIAS - Specifies a name for each expression selected by the view’s query
+8. Subquery - A complete SELECT statement
+9. Complex - Derives data from more than one table, contains functions or groups of data, and does not always allow DML operations through the view
+10 Replace - Re-creates the view if it already exists
+
+1. What are three uses for a view from a DBA’s perspective?
+  - restrict access
+  - create simple views
+  - Abiluty to alias values 
+2. Create a simple view called view_d_songs that contains the ID, title, and artist from the DJs on
+Demand table for each “New Age” type code. In the subquery, use the alias “Song Title” for the
+title column.
+```sql
+CREATE VIEW view_d_songs AS
+SELECT d_songs.id, d_songs.title "Song Title", d_songs.artist
+from d_songs INNER JOIN d_types ON d_songs.type_code = d_types.code
+where d_types.description = 'New Age';
+```
+3. SELECT *
+FROM view_d_songs.
+What was returned?
+
+4. REPLACE view_d_songs. Add type_code to the column list. Use aliases for all columns.
+```sql
+CREATE VIEW view_d_songs AS
+SELECT d_songs.id, d_songs.title "Song Title", d_songs.artist, d_songs.type_code
+from d_songs INNER JOIN d_types ON d_songs.type_code = d_types.code
+where d_types.description = 'New Age';
+```
+5. Jason Tsang, the disk jockey for DJs on Demand, needs a list of the past events and those
+planned for the coming months so he can make arrangements for each event’s equipment setup.
+As the company manager, you do not want him to have access to the price that clients paid for
+their events. Create a view for Jason to use that displays the name of the event, the event date,
+and the theme description. Use aliases for each column name.
+
+6. It is company policy that only upper-level management be allowed access to individual employee
+salaries. The department managers, however, need to know the minimum, maximum, and
+average salaries, grouped by department. Use the Oracle database to prepare a view that
+displays the needed information for department managers.
 
 
 
