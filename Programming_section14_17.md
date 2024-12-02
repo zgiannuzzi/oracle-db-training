@@ -464,11 +464,100 @@ CREATE SYNONYM dj_tracks FOR d_track_listings;
 DROP SYNONYM dj_tracks;
 ```
 
+# 17.1 
+
+## Exercise 
+1. What are system privileges concerned with?
+  - what you are able to do at the database level, eg. create tables 
+2. What are object privileges concerned with?
+  - what you are able to do on a "table" level eg. alter or update tables 
+3. What is another name for object security?
+  - data security
+4. What commands are necessary to allow Scott access to the database with a password of tiger?
+```sql
+CREATE USER scott IDENTIFIED BY tiger;
+```
+5. What are the commands to allow Scott to SELECT from and UPDATE the d_clients table?
+```sql
+GRANT SELECT, UPDATE ON d_clients to scott;
+```
+6. What is the command to allow everybody the ability to view the d_songs table?
+```sql
+GRANT SELECT ON d_songs to PUBLIC;;
+```
+7. Query the data dictionary to view the object privileges granted to you the user.
+```sql
+CREATE USER scott IDENTIFIED BY tiger;
+```
+8. What privilege should a user be given to create tables?
+  - CREATE TABLE
+9. If you create a table, how can you pass along privileges to other users just to view your table?
+```sql
+GRANT SELECT ON d_songs to name1, name2...
+```
+10. What syntax would you use to grant another user access to your copy_employees table?
+```sql
+GRANT ALL ON copy_employees to name1,name2...
+```
+11. How can you find out what privileges you have been granted for columns in the tables belonging
+to others?
+
+# 17.2 
+
+1. What is a role?
+  - Role is predefined set of privleges 
+2. What are the advantages of a role to a DBA?
+  - Control what users have access too and changes they can make 
+3. Give the ability to another user in your class to look at one of your tables. Give him the right to let
+other students have that ability.
+  
+4. You are the DBA. You are creating many users who require the same system privileges. What
+should you use to make your job easier?
+  - Group together privleges into a role and assign the role to those people 
+5. What is the syntax to accomplish the following?
+  - Create a role of manager that has the privileges to select, insert, and update and delete from the employees table
+    ```sql
+      CREATE ROLE manager;
+      GRANT SELECT, INSERT, UPDATE, DELETE ON employees TO manager;
+    ```
+  - Create a role of clerk that just has the privileges of select and insert on the employees table
+    ```sql
+      CREATE ROLE clerk;
+      GRANT SELECT, INSERT ON employees TO clerk;
+    ```
+  - Grant the manager role to user scott
+    ```sql
+      GRANT manager to scott
+    ```
+  - Revoke the ability to delete from the employees table from the manager role
+    ```sql
+       REVOKE DELETE ON employees from manager
+    ```
+6. What is the purpose of a database link?
 
 
+# 17.3 
 
-
-
+1. Working with the employees table, and using regular expressions, write a query that returns
+employees whose first names start with a “S” (uppercase) followed by either a “t” (lowercase) or
+“h” (lowercase).
+```sql
+SELECT * FROM employees
+WHERE REGEXP_LIKE(first_name, '^S(t|h)');
+```
+2. Investigate the LOCATIONS table.
+   - Describe the table.
+       ```sql
+         Describe locations 
+       ```
+   - Perform a select that returns all rows and all columns of that table.
+       ```sql
+        SELECT * FROM locations 
+       ```
+   - Write a query using regular expressions that removes the spaces in the street_address column in the LOCATIONS table.
+       ```sql
+       SELECT street_address, REGEXP_REPLACE(street_address, ' ','') AS "NEW ADDRESS" FROM locations; 
+       ```
 
 
 
